@@ -115,12 +115,12 @@ class PcapBasedDetector(DefaultCrashDetector):
             received_data_size += len(curr_d)
 
         if self.normal_transmit_data_size > 0:
-            transmit_bammed_up = (transmit_data_size / float(self.normal_transmit_data_size)) >= ANOMALY_THRESHOLD
+            transmit_bammed_up = (transmit_data_size / float(self.normal_transmit_data_size)) <= ANOMALY_THRESHOLD
         else:
             transmit_bammed_up = transmit_data_size > 0
 
         if self.normal_receive_data_size > 0:
-            receive_bammed_up = (received_data_size / float(self.normal_receive_data_size)) >= ANOMALY_THRESHOLD
+            receive_bammed_up = (received_data_size / float(self.normal_receive_data_size)) <= ANOMALY_THRESHOLD
         else:
             receive_bammed_up = received_data_size > 0
 
